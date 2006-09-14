@@ -1,0 +1,7 @@
+%% this simply returns all synonyms of a word
+%% in all parts of speech
+
+%% the search number for synonyms is 23
+
+word("work").
+synonyms(W,SW,SY,P) :- &wordnet[23,W](P,SW,SY,_),word(W).

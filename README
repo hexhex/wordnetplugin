@@ -1,0 +1,71 @@
+dlvhex - WordNet plugin
+=======================
+
+Installation
+------------
+Requirements:
+- dlvhex
+- WordNet
+
+Installation:
+- ./bootstrap
+- ./configure
+- ./make
+- ./sudo make install
+
+configure options:
+--enable-unserinstall  Installs plugin into home directory
+--with-wordnet         specifies directory where to find WordNet
+
+
+Usage
+-----
+This plugin provides a single atom:
+
+&wordnet[S,W](P,WS,R,RS).
+
+Input parameters:
+S - WordNet search number (see table below)
+W - input word
+
+Output parameters:
+P  - part of speech (see table below)
+WS - input word sense number
+R  - result word
+RS - result word sense number
+
+
+Table 1: WordNet 2.1 search numbers supported and tested
+-------+------------------------------------------------
+Number | Search
+-------+------------------------------------------------
+     1 | Antonyms 
+     2 | Hypernyms
+     3 | Hyponyms 
+     4 | Entailment
+     5 | Similar
+     6 | Member Holonyms
+     7 | Substance Holonyms
+     8 | Part Holonyms
+     9 | Member Meronyms
+    10 | Substance Meronyms
+    11 | Part Meronyms
+    14 | Cause to
+    15 | Participle of Verb
+    18 | Attribute of
+    20 | Derivationally related forms
+    23 | Synonyms
+    38 | Instance of
+    39 | Instances
+
+
+Table 2: Parts of Speech
+-------+----------------
+Number | Part of Speech
+-------+----------------
+     1 | Noun
+     2 | Verb
+     3 | Adjective
+     4 | Adverb
+
+Usage examples can be found in the examples directory.

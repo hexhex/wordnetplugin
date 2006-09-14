@@ -1,0 +1,54 @@
+%% This simple example finds alternatives (synonyms)
+%% for words that share the same holonym. However,
+%% two words could share a holonym, though they are not
+%% related at all. This happens, if they refer to the 
+%% same word (holonym), but to different senses.
+%% Thus it's necessary to cross-check, if the two words are
+%% indeed meronyms of this holonym in the same sense.
+%%
+%% Example:
+%% "row" and "leg" have the same holonym "table"
+%% However, they should not be regarded as relatives, since
+%% they refere to different senses of "table".
+
+%% word()     input
+%% relevant() input, augmented by relevant sense number
+%% more()     output
+%% 
+%% we consider only nouns in this example
+
+%% the search-numbers for (all kinds of) holonyms ...
+holosearch(6).
+holosearch(7).
+holosearch(8).
+%% ... and meronyms
+merosearch(9).
+merosearch(10).
+merosearch(11).
+
+%% the input:
+words("row").
+words("column").
+words("leg").
+%% find the holonyms ...
+holonyms(W,SS,H) :- &wordnet[SN,W](1,SS,H,_), words(W), holosearch(SN).
+
+%% ... and the meronyms of the holonyms for
+%% sense cross-checking:
+hwords(H) :- holonyms(_,_,H).
+meronyms(W,SS,H) :- &wordnet[SN,W](1,SS,H,_), hwords(W), merosearch(SN).
+
+%% determine relevant senses (sense cross-checking):
+%% (if two words have the same holonym, then this
+%% holonym should have both words as meronyms in
+%% the same sense)
+relevant(W1,S1) :- holonyms(W1,S1,H), holonyms(W2,S2,H), W1!=W2, meronyms(H,HS,W1), meronyms(H,HS,W2).
+
+%% find synonyms of relevant senses:
+%% (this step might be the same for 
+%% all these kinds of applications)
+more(M) :- &wordnet[23,W](1,S,M,_), relevant(W,S).
+
+%% optional: add the holonym (or whatever 
+%% the common relative was) itself to more():
+more(M) :- holonyms(W,S,M), relevant(W,S).

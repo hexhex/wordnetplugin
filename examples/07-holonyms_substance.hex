@@ -1,0 +1,13 @@
+%% this returns all (substance) holonyms of a word
+%% POS: nouns
+
+%% the search number for (substance) holonyms
+%% is 7.
+%% Note: In the WordNet documentation this is
+%%       the search number for substance meronyms.
+%%       In fact search 7 fetches words, for
+%%       which *word* is a meronym (and these
+%%       are its holonyms)
+
+word("hydrogen").
+meronyms(W,SW,H,SH) :- &wordnet[07,W](1,SW,H,SH), word(W).

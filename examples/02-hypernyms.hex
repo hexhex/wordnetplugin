@@ -1,0 +1,7 @@
+%% this returns all hypernyms of a word
+%% in all parts of speech
+
+%% the search number for hypernyms is 2
+
+word("house").
+hypernyms(P,W,SW,H,SH) :- &wordnet[2,W](P,SW,H,SH), word(W).

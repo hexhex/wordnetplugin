@@ -1,0 +1,8 @@
+%% this returns all words of which a word
+%% is instance of
+
+%% the search number for instance of
+%% is 38
+
+word("einstein").
+instanceof(W,SW,IO) :- &wordnet[38,W](_,SW,IO,_),word(W).

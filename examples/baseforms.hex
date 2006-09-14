@@ -1,0 +1,2 @@
+word("axes").
+synonyms(P,S1,S,S2) :- &wordnet[23,W](P,S1,S,S2), word(W).

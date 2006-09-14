@@ -1,0 +1,10 @@
+%% this returns all verbs, for which a word is participle
+%% (very rare)
+%% POS: adjectives
+
+%% the search number for participle of verb
+%% is 15.
+
+word("seeking").
+participleofverb(P,W,SW,PA) :- &wordnet[15,W](P,SW,PA,_), word(W).
+
