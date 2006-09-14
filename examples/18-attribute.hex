@@ -1,0 +1,9 @@
+%% this returns all words, of which a given word
+%% is an attribute
+%% POS: adjectives
+
+%% the search number for attribute
+%% is 18.
+
+word("loud").
+attibute(W,A) :- &wordnet[18,W](_,_,A,_), word(W).

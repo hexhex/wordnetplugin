@@ -1,0 +1,45 @@
+%% This simple example finds alternatives (synonyms)
+%% for words that share the same hypernym. However,
+%% two words could share a hypernym, though they are not
+%% related at all. This happens, if they refer to the 
+%% same word (hypernym), but to different senses.
+%% Thus it's necessary to cross-check, if the two words are
+%% indeed hyponyms of this hypernym in the same sense.
+%%
+%% Example:
+%% "calendar" and "dresser" have the same hypernym "table"
+%% However, they should not be regarded as relatives, since
+%% they refere to different senses of "table".
+
+%% word()     input
+%% relevant() input, augmented by relevant sense number
+%% more()     output
+%% 
+%% we consider only nouns in this example
+
+%% the input:
+words("calendar").
+words("contents").
+words("dresser").
+%% find the hypernyms ...
+hypernyms(W,SS,H) :- &wordnet[2,W](1,SS,H,_), words(W).
+
+%% ... and the hyponyms of the hypernyms for
+%% sense cross-checking:
+hwords(H) :- hypernyms(_,_,H).
+hyponyms(W,SS,H) :- &wordnet[3,W](1,SS,H,_), hwords(W).
+
+%% determine relevant senses (sense cross-checking):
+%% (if two words have the same hypernym, then this
+%% hypernym should have both words as hyponyms in
+%% the same sense)
+relevant(W1,S1) :- hypernyms(W1,S1,H), hypernyms(W2,S2,H), W1!=W2, hyponyms(H,HS,W1), hyponyms(H,HS,W2).
+
+%% find synonyms of relevant senses:
+%% (this step might be the same for 
+%% all these kinds of applications)
+more(M) :- &wordnet[23,W](1,S,M,_), relevant(W,S).
+
+%% optional: add the hypernym (or whatever 
+%% the common relative was) itself to more():
+more(M) :- hypernyms(W,S,M), relevant(W,S).

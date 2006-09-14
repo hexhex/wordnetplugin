@@ -1,0 +1,7 @@
+%% this returns all instances of a word
+
+%% the search number for instances
+%% is 39
+
+word("actor").
+instances(W,SW,I,SI) :- &wordnet[39,W](P,SW,I,SI),word(W).

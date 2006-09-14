@@ -1,0 +1,9 @@
+%% this returns all words that express,
+%% what a word is cause to (give -> have)
+%% POS: verbs
+
+%% the search number for cause to
+%% is 14.
+
+word("give").
+causeto(W,C) :- &wordnet[14,W](_,_,C,_), word(W).

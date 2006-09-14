@@ -1,0 +1,7 @@
+%% this returns all hyponyms of a word
+%% in all parts of speech
+
+%% the search number for hyponyms is 3
+
+word("work").
+hyponyms(W,SW,H,SH) :- &wordnet[3,W](1,SW,H,SH),word(W).

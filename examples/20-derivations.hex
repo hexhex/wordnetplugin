@@ -1,0 +1,9 @@
+%% this returns all words, of which a given word
+%% is an attribute
+%% POS: adjectives
+
+%% the search number for derivations
+%% is 20.
+
+word("nice").
+derivations(W,SW,D) :- &wordnet[20,W](_,SW,D,_), word(W).

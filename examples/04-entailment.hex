@@ -1,0 +1,8 @@
+%% this returns all entailments of a word
+%% POS: verbs
+
+%% the search number for entailment is 4
+
+word("stumble").
+entailment(W,E) :- &wordnet[4,W](_,_,E,_), word(W).
+
