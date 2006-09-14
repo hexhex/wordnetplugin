@@ -1,7 +1,15 @@
 AC_PREREQ([2.59])
-
-AC_INIT([dlvhex-wordnetplugin],[0.1],[juergen.bock@web.de])
+AC_INIT([dlvhex-wordnetplugin],[0.1.0],[juergen.bock@web.de])
 AC_CONFIG_SRCDIR([src/impl/wordnetplugin.cpp])
+
+MAJOR=`echo $PACKAGE_VERSION | sed "s/^\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/"`
+MINOR=`echo $PACKAGE_VERSION | sed "s/^\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/"`
+MICRO=`echo $PACKAGE_VERSION | sed "s/^\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/"`
+
+# user corresponding names and texts here
+AC_DEFINE_UNQUOTED([WORDNETPLUGIN_MAJOR], [$MAJOR], [Major version number of the wordnet-plugin])
+AC_DEFINE_UNQUOTED([WORDNETPLUGIN_MINOR], [$MINOR], [Minor version number of the wordnet-plugin])
+AC_DEFINE_UNQUOTED([WORDNETPLUGIN_MICRO], [$MICRO], [Micro version number of the wordnet-plugin])
 
 AM_INIT_AUTOMAKE
 
@@ -58,12 +66,13 @@ AC_HEADER_STDBOOL
 AC_C_CONST
 
 # Checks for library functions.
+AC_LIBTOOL_DLOPEN
 AC_PROG_LIBTOOL
 
 #
 # check for the WordNet wn library
 #
-AC_CHECK_LIB(WN, 
+AC_CHECK_LIB([WN], 
              wninit, 
              [], 
              AC_MSG_ERROR([WordNet library not found. \

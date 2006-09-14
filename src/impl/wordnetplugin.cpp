@@ -168,5 +168,9 @@ WordNetPlugin theWordNetPlugin;
 extern "C"
 WordNetPlugin*
 PLUGINIMPORTFUNCTION() {
+    theWordNetPlugin.setVersion(WORDNETPLUGIN_MAJOR,
+                            WORDNETPLUGIN_MINOR,
+                            WORDNETPLUGIN_MICRO);
+
 	return &theWordNetPlugin;
 }
