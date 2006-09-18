@@ -67,6 +67,7 @@ AC_C_CONST
 
 # Checks for library functions.
 AC_LIBTOOL_DLOPEN
+AC_DISABLE_STATIC # we don't need a static library
 AC_PROG_LIBTOOL
 
 #
@@ -104,6 +105,7 @@ AC_SUBST([plugindir])
 AC_CONFIG_FILES([
            Makefile
            src/impl/Makefile
+           include/impl/Makefile
 ])
 
 AC_OUTPUT

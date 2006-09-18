@@ -17,6 +17,9 @@ configure options:
 --enable-unserinstall  Installs plugin into home directory
 --with-wordnet         specifies directory where to find WordNet
 
+Mind that on some systems it might be necessary to set the environment variable
+WNHOME to the WordNet installation before using the plugin with dlvhex, e.g.,
+WNHOME=/usr/local.
 
 Usage
 -----
