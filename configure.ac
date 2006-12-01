@@ -1,5 +1,5 @@
 AC_PREREQ([2.59])
-AC_INIT([dlvhex-wordnetplugin],[0.1.0],[juergen.bock@web.de])
+AC_INIT([dlvhex-wordnetplugin],[0.2.0],[juergen.bock@web.de])
 AC_CONFIG_SRCDIR([src/impl/wordnetplugin.cpp])
 
 MAJOR=`echo $PACKAGE_VERSION | sed "s/^\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/"`
@@ -84,7 +84,7 @@ the WordNet base directory.]))
 #
 # of course we need dlvhex itself!
 #
-PKG_CHECK_MODULES([DLVHEX], [dlvhex >= 0.1])
+PKG_CHECK_MODULES([DLVHEX], [dlvhex >= 1.1])
 
 #
 # where the plugin will be installed by default.
