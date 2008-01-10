@@ -14,7 +14,8 @@
 #include <string>
 using namespace std;
 
-
+namespace dlvhex {
+  namespace wordnet {
 
 bool isPos( unsigned short pos_field, int pos ) {
 	return (pos_field & (1 << pos-1)) > 0;
@@ -41,3 +42,6 @@ int my_display_message( char *msg ) {
 	// so no additional message prefix is required
 	throw PluginError( msg );
 }
+
+  } // namespace wordnet
+} // namespace dlvhex

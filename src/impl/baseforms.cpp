@@ -21,6 +21,9 @@
 #include <iostream>
 using namespace std;
 
+namespace dlvhex {
+  namespace wordnet {
+
 // constructor that takes a string argument
 BaseForms::BaseForms( string word ) {
 
@@ -117,3 +120,6 @@ set<string> BaseForms::getBaseForms( int pos ) {
 unsigned short BaseForms::getPOS() {
 	return this->pos_field;
 }
+
+  } // namespace wordnet
+} // namespace dlvhex

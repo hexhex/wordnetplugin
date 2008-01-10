@@ -17,6 +17,8 @@
 #include <iostream>
 #include <string>
 
+namespace dlvhex {
+  namespace wordnet {
 
 //
 // each atom has to be derived from PluginAtom
@@ -152,7 +154,8 @@ public:
 		// these strings will be the external atoms' 
 		// names in the program
 		//
-		a["wordnet"] = new WordNetAtom;
+	  boost::shared_ptr<PluginAtom> wordnet(new WordNetAtom);
+	  a["wordnet"] = wordnet;
     }
 };
 
@@ -162,15 +165,18 @@ public:
 //
 WordNetPlugin theWordNetPlugin;
 
+  } // namespace wordnet
+} // namespace dlvhex
+
 //
 // and let it be loaded by dlvhex!
 //
 extern "C"
-WordNetPlugin*
+dlvhex::wordnet::WordNetPlugin*
 PLUGINIMPORTFUNCTION() {
-    theWordNetPlugin.setVersion(WORDNETPLUGIN_MAJOR,
-                            WORDNETPLUGIN_MINOR,
-                            WORDNETPLUGIN_MICRO);
-
-	return &theWordNetPlugin;
+  dlvhex::wordnet::theWordNetPlugin.setVersion(WORDNETPLUGIN_MAJOR,
+					       WORDNETPLUGIN_MINOR,
+					       WORDNETPLUGIN_MICRO);
+  
+  return &dlvhex::wordnet::theWordNetPlugin;
 }

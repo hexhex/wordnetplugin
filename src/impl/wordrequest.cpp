@@ -21,6 +21,8 @@
 #include <iostream> 
 using namespace std;
 
+namespace dlvhex {
+  namespace wordnet {
 
 // constructor that takes a string argument
 WordRequest::WordRequest( string word ) {
@@ -217,13 +219,16 @@ void WordRequest::appendSynonyms( int pos,
 		     wordCounter++ ) {
 			Tuple returnQuadruple;
 			
-			returnQuadruple.push_back( pos );
-			returnQuadruple.push_back( synSense );
+			returnQuadruple.push_back( Term(pos) );
+			returnQuadruple.push_back( Term(synSense) );
 			returnQuadruple.push_back( 
-				quoteString( synset->words[wordCounter] ) );
-			returnQuadruple.push_back( searchSense );
+						  Term (quoteString( synset->words[wordCounter] ) ));
+			returnQuadruple.push_back( Term(searchSense) );
 			
 			returnVector.push_back( returnQuadruple );
 		}
 	}
 }
+
+  } // namespace wordnet
+} // namespace dlvhex

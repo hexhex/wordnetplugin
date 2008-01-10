@@ -10,6 +10,8 @@
 #include <string>
 using namespace std;
 
+namespace dlvhex {
+  namespace wordnet {
 
 class WordRequest {
 
@@ -43,6 +45,9 @@ class WordRequest {
 			     vector<Tuple> &returnVector );
 
 };
+
+  } // namespace wordnet
+} // namespace dlvhex
 
 #endif
 

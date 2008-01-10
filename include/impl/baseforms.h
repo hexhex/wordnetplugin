@@ -8,6 +8,8 @@
 #include <string>
 using namespace std;
 
+namespace dlvhex {
+  namespace wordnet {
 
 class BaseForms {
 
@@ -31,5 +33,8 @@ class BaseForms {
 	void init();
 	void load();
 };
+
+  } // namespace wordnet
+} // namespace dlvhex
 
 #endif

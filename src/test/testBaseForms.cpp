@@ -6,10 +6,13 @@
 #include <iostream>
 #include <list>
 #include <string>
-using namespace std;
 
 #include "BaseForms.h"
-#include "/usr/local/WordNet-2.1/include/wn.h"
+#include "wn.h"
+
+using namespace std;
+using namespace dlvhex;
+using namespace dlvhex::wordnet;
 
 void showBaseForms( set<string>::iterator b, set<string>::iterator e );
 
@@ -76,3 +79,6 @@ void showBaseForms( set<string>::iterator b, set<string>::iterator e ) {
     for( bf_it = b; bf_it != e; bf_it++ )
 	cout << "\t" << *bf_it << endl;
 }
+
+  } // namespace wordnet
+} // namespace dlvhex

@@ -1,9 +1,12 @@
 #include <iostream>
 #include <string>
 #include <set>
-using namespace std;
 
 #include "WordRequest.h"
+
+using namespace std;
+using namespace dlvhex;
+using namespace dlvhex::wordnet;
 
 main( int argc, char **argv) {
 
