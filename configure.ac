@@ -1,5 +1,5 @@
 AC_PREREQ([2.59])
-AC_INIT([dlvhex-wordnetplugin],[0.2.0],[juergen.bock@web.de])
+AC_INIT([dlvhex-wordnetplugin],[0.3.0],[juergen.bock@web.de])
 AC_CONFIG_SRCDIR([src/impl/wordnetplugin.cpp])
 
 MAJOR=`echo $PACKAGE_VERSION | sed "s/^\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/"`
@@ -12,6 +12,17 @@ AC_DEFINE_UNQUOTED([WORDNETPLUGIN_MINOR], [$MINOR], [Minor version number of the
 AC_DEFINE_UNQUOTED([WORDNETPLUGIN_MICRO], [$MICRO], [Micro version number of the wordnet-plugin])
 
 AM_INIT_AUTOMAKE
+
+AC_CANONICAL_HOST
+
+# by default we look into /opt/local and /sw for include files (macports vs. fink)
+case $host_os in
+     darwin*|macosx*)
+	CPPFLAGS="$CPPFLAGS -I/opt/local/include -I/sw/include"
+     ;;
+esac 
+
+
 
 # Checks for programs.
 AC_PROG_CXX
@@ -85,6 +96,8 @@ the WordNet base directory.]))
 # of course we need dlvhex itself!
 #
 PKG_CHECK_MODULES([DLVHEX], [dlvhex >= 1.1])
+
+AC_PATH_BOOST([1.33.0], [], [AC_MSG_ERROR([could not find boost library. Download it at http://www.boost.org/.])])
 
 #
 # where the plugin will be installed by default.
