@@ -1,0 +1,19 @@
+2008-01-10  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
+
+	* include/impl/baseforms.h: Adapt to new dlvhex plugin API.
+	* include/impl/wordrequest.h: Likewise.
+	* include/impl/util.h: Likewise.
+	* src/test/testWordRequest.cpp: Likewise.
+	* src/test/testBaseForms.cpp: Likewise.
+	* src/impl/wordrequest.cpp: Likewise.
+	* src/impl/wordnetplugin.cpp: Likewise.
+
+	* configure.ac: Bump version to 0.3.0.
+	Check for boost.
+	
+	* bootstrap: Rename to boostrap.sh.
+	Use autoreconf.
+
+	* AUTHORS: New file.
+	* NEWS: Likewise.
+	* m4/boost.m4: Likewise.
