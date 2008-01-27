@@ -174,6 +174,7 @@ WordNetPlugin theWordNetPlugin;
 extern "C"
 dlvhex::wordnet::WordNetPlugin*
 PLUGINIMPORTFUNCTION() {
+  dlvhex::wordnet::theWordNetPlugin.setPluginName(PACKAGE_TARNAME);
   dlvhex::wordnet::theWordNetPlugin.setVersion(WORDNETPLUGIN_MAJOR,
 					       WORDNETPLUGIN_MINOR,
 					       WORDNETPLUGIN_MICRO);
