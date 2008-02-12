@@ -95,9 +95,13 @@ the WordNet base directory.]))
 #
 # of course we need dlvhex itself!
 #
-PKG_CHECK_MODULES([DLVHEX], [dlvhex >= 1.1])
+PKG_CHECK_MODULES([DLVHEX], [dlvhex >= 1.7])
 
-AC_PATH_BOOST([1.33.0], [], [AC_MSG_ERROR([could not find boost library. Download it at http://www.boost.org/.])])
+# checking for boost libs
+BOOST_REQUIRE([1.33.0])
+BOOST_SMART_PTR
+BOOST_STRING_ALGO
+BOOST_TOKENIZER
 
 #
 # where the plugin will be installed by default.

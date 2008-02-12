@@ -1,4 +1,4 @@
-AUTOMAKE_OPTIONS = foreign
+AUTOMAKE_OPTIONS = gnu
 
 #
 # replace 'plugin' on the right side by your plugin's name
@@ -20,6 +20,7 @@ libdlvhexwordnet_la_SOURCES = \
 #
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/include \
+	$(BOOST_CPPFLAGS) \
 	$(DLVHEX_CFLAGS)
 
 libdlvhexwordnet_la_LDFLAGS = -avoid-version -module
