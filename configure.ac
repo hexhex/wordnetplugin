@@ -1,4 +1,4 @@
-AC_PREREQ([2.59])
+AC_PREREQ([2.61])
 AC_INIT([dlvhex-wordnetplugin],[0.3.0],[juergen.bock@web.de])
 AC_CONFIG_SRCDIR([src/impl/wordnetplugin.cpp])
 
