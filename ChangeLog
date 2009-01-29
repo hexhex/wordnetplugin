@@ -1,3 +1,11 @@
+2009-01-29  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
+
+	* src/impl/wordrequest.cpp: g++ 4.3 introduced some backwards
+	incompatibility <http://gcc.gnu.org/gcc-4.3/porting_to.html> for
+	C-functions: #include cstring.
+	* src/impl/util.cpp: Likewise.
+	* src/impl/baseforms.cpp: Likewise.
+
 2008-02-20  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
 	* configure.ac: Require autoconf >= 2.61.
