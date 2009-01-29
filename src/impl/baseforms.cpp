@@ -19,6 +19,8 @@
 #include <set>
 #include <string>
 #include <iostream>
+#include <cstring>
+
 using namespace std;
 
 namespace dlvhex {

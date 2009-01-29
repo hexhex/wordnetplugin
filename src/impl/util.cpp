@@ -12,6 +12,8 @@
 #include "dlvhex/Error.h"
 
 #include <string>
+#include <cstring>
+
 using namespace std;
 
 namespace dlvhex {

@@ -19,6 +19,8 @@
 #include <wn.h>
 
 #include <iostream> 
+#include <cstring>
+
 using namespace std;
 
 namespace dlvhex {
@@ -26,6 +28,8 @@ namespace dlvhex {
 
 // constructor that takes a string argument
 WordRequest::WordRequest( string word ) {
+
+  ///@todo TK: whoopsiedaisy, memory leak time!
 
 	// set word_ca
 	this->word_ca = new char[word.length()+1];
@@ -42,6 +46,8 @@ WordRequest::WordRequest( string word ) {
 
 // constructor that takes a char array argument
 WordRequest::WordRequest( char *word ) {
+
+  ///@todo TK: whoopsiedaisy, memory leak time!
 
 	// set word_ca
 	this->word_ca = new char[strlen( word ) + 1];
