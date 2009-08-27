@@ -3,5 +3,6 @@ AUTOMAKE_OPTIONS = gnu 1.10
 ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS = \
-        include/impl \
-	src/impl
+  include/impl \
+  src/impl \
+  examples

@@ -123,6 +123,7 @@ AC_CONFIG_FILES([
            Makefile
            src/impl/Makefile
            include/impl/Makefile
+           examples/Makefile
 ])
 
 AC_OUTPUT

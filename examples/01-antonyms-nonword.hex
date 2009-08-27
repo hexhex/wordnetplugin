@@ -1,0 +1,8 @@
+%% this returns all antonyms of a word
+%% POS: verbs, adjectives, adverbs
+
+%% the search number for antonyms
+%% is 1.
+
+word("foobar").
+antonyms(P,W,A) :- &wordnet[1,W](P,_,A,_), word(W).

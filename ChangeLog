@@ -1,3 +1,15 @@
+2009-08-27  Peter Schueller  <ps@kr.tuwien.ac.at>
+
+	* m4/boost.m4: Updating boost.m4 to version currently used in dlvhex.
+
+	* configure.ac: Added distcheck testcase, using dlvhex test script.
+	* Makefile.am: Likewise.
+	* examples/Makefile.am: Likewise.
+	* examples/01-antonyms-nonword.hex: Likewise.
+	* examples/tests/01-antonyms-nonword.out: Likewise.
+	* examples/tests/wordnetplugintests.test: Likewise.
+	* examples/tests/run-dlvhex-tests.sh: Likewise.
+
 2009-01-29  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
 	* src/impl/wordrequest.cpp: g++ 4.3 introduced some backwards
