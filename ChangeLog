@@ -1,3 +1,8 @@
+2010-04-23  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
+
+	* src/impl/Makefile.am (AUTOMAKE_OPTIONS): Remove.
+	* include/impl/Makefile.am: Likewise.
+
 2009-09-23  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
 	* m4/boost.m4: Fix for autoconf 2.64 (see also
