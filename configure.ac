@@ -1,5 +1,5 @@
 AC_PREREQ([2.61])
-AC_INIT([dlvhex-wordnetplugin],[0.3.0],[juergen.bock@web.de])
+AC_INIT([dlvhex-wordnetplugin],[1.7.0],[juergen.bock@web.de])
 AC_CONFIG_SRCDIR([src/impl/wordnetplugin.cpp])
 
 MAJOR=`echo $PACKAGE_VERSION | sed "s/^\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/"`
