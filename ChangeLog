@@ -1,5 +1,7 @@
 2010-06-22  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>
 
+	* configure.ac: Add support for wordnet on Debian/Ubuntu systems.
+
 	Release version 1.7.0.
 
 2010-06-15  Thomas Krennwallner  <tkren@kr.tuwien.ac.at>

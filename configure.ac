@@ -86,12 +86,17 @@ AC_PROG_LIBTOOL
 #
 AC_CHECK_LIB([WN], 
              wninit, 
-             [], 
-             AC_MSG_ERROR([WordNet library not found. \
+             [],
+	     [AC_CHECK_LIB([wordnet], 
+             wninit, 
+             [],
+	     [AC_MSG_ERROR([WordNet library not found. \
 Check your WordNet installation \
 or use --with-wordnet to specify \
-the WordNet base directory.]))
-
+the WordNet base directory.])])
+	     ]
+)
+             
 #
 # of course we need dlvhex itself!
 #
