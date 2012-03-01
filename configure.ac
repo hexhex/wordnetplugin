@@ -1,6 +1,6 @@
 AC_PREREQ([2.61])
 AC_INIT([dlvhex-wordnetplugin],[2.0.0],[juergen.bock@web.de])
-AC_CONFIG_SRCDIR([src/impl/wordnetplugin.cpp])
+AC_CONFIG_SRCDIR([src/WordnetPlugin.cpp])
 AC_CONFIG_HEADERS([include/config.h])
 
 # for documentation of the versioning scheme see
@@ -127,8 +127,8 @@ fi
 #
 AC_CONFIG_FILES([
            Makefile
-           src/impl/Makefile
-           include/impl/Makefile
+           src/Makefile
+           include/Makefile
            examples/Makefile
 ])
 
