@@ -8,10 +8,11 @@ plugin_LTLIBRARIES = libdlvhexwordnet.la
 # add all sources of your plugin
 #
 libdlvhexwordnet_la_SOURCES = \
-			      wordnetplugin.cpp \
-			      wordrequest.cpp \
-			      baseforms.cpp \
-			      util.cpp
+			      WordnetPlugin.cpp \
+			      WordnetAtom.cpp \
+			      Wordrequest.cpp \
+			      Baseforms.cpp \
+			      Util.cpp
 
 #
 # extend compiler flags by CFLAGS of other needed libraries

@@ -1,6 +1,8 @@
 # including headers for make dist
 noinst_HEADERS = \
-                 baseforms.h \
-                 profile.h \
-                 util.h \
-                 wordrequest.h
+				 WordnetPlugin.h \
+				 WordnetAtom.h \
+				 Wordrequest.h \
+                 Baseforms.h \
+                 Util.h \
+                 Profile.h
