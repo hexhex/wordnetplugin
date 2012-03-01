@@ -5,3 +5,10 @@
 
 word("actor").
 instances(W,SW,I,SI) :- &wordnet[39,W](P,SW,I,SI),word(W).
+
+instances("actor",1,"George_Orson_Welles",72), 
+instances("actor",1,"Orson_Welles",72), 
+instances("actor",1,"Welles",72), 
+instances("actor",1,"Duke_Wayne",71), 
+instances("actor",1,"John_Wayne",71), 
+instances("actor",1,"Wayne",71)?

@@ -11,3 +11,7 @@
 
 word("water").
 meronyms(W,SW,M,SM) :- &wordnet[10,W](1,SW,M,SM), word(W).
+
+meronyms("water",1,"oxygen",2), 
+meronyms("water",1,"hydrogen",1), 
+meronyms("water",2,"water",1)?

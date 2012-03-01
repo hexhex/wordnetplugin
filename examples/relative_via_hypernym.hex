@@ -43,3 +43,14 @@ more(M) :- &wordnet[23,W](1,S,M,_), relevant(W,S).
 %% optional: add the hypernym (or whatever 
 %% the common relative was) itself to more():
 more(M) :- hypernyms(W,S,M), relevant(W,S).
+
+more("table_of_contents"), 
+more("tabular_array"), 
+more("listing"), 
+more("list"), 
+more("table"), 
+more("contents"), 
+more("calendar"), 
+relevant("contents",1), 
+relevant("calendar",2), 
+relevant("calendar",3)?

@@ -1,0 +1,1 @@
+{derivations("nice",1,"niceness"), derivations("nice",2,"politeness"), derivations("nice",2,"niceness"), derivations("nice",5,"politeness"), derivations("nice",5,"niceness"), word("nice")}

@@ -11,3 +11,7 @@
 
 word("bumper").
 meronyms(W,SW,H,SH) :- &wordnet[08,W](1,SW,H,SH),word(W).
+
+meronyms("bumper",2,"machine",1), 
+meronyms("bumper",2,"automobile",1), 
+meronyms("bumper",2,"car",1)?

@@ -6,4 +6,7 @@
 %% is 18.
 
 word("loud").
-attibute(W,A) :- &wordnet[18,W](_,_,A,_), word(W).
+attribute(W,A) :- &wordnet[18,W](_,_,A,_), word(W).
+
+attribute("loud","intensity"), 
+attribute("loud","volume")?

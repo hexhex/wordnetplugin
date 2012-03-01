@@ -6,3 +6,5 @@
 
 word("einstein").
 instanceof(W,SW,IO) :- &wordnet[38,W](_,SW,IO,_),word(W).
+
+instanceof("einstein",1,"physicist")?

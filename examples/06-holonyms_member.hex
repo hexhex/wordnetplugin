@@ -11,3 +11,5 @@
 
 word("lion").
 holonyms(W,SW,H,SH) :- &wordnet[6,W](1,SW,H,SH),word(W).
+
+holonyms("lion",1,"pride",2)?

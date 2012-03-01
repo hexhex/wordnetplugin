@@ -6,3 +6,4 @@
 word("stumble").
 entailment(W,E) :- &wordnet[4,W](_,_,E,_), word(W).
 
+entailment("stumble","walk")?

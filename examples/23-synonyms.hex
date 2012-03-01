@@ -5,3 +5,16 @@
 
 word("work").
 synonyms(W,SW,SY,P) :- &wordnet[23,W](P,SW,SY,_),word(W).
+
+synonyms("work",1,"work",2), 
+synonyms("work",2,"work",1), 
+synonyms("work",2,"work",2), 
+synonyms("work",3,"act",2), 
+synonyms("work",3,"employment",1), 
+synonyms("work",3,"work",1), 
+synonyms("work",3,"work",2), 
+synonyms("work",4,"operate",2), 
+synonyms("work",4,"function",2), 
+synonyms("work",4,"study",1), 
+synonyms("work",4,"work",1)?
+
