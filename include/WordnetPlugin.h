@@ -16,7 +16,7 @@ namespace dlvhex {
 		WordnetPlugin();
 		~WordnetPlugin();
 		std::vector<PluginAtomPtr> createAtoms(ProgramCtx&) const;	
-	}
+	};
 	
   }
 }

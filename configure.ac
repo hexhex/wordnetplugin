@@ -42,7 +42,7 @@ AC_ARG_ENABLE(profile,
 	     )
 
 # Assume WordNet in this directory:
-ASSUMED_WN_BASE="/usr/local/WordNet-2.1"
+ASSUMED_WN_BASE="/usr/local/WordNet-3.0"
 
 #
 # running configure --with-wordnet will take wordnetdir.
@@ -57,8 +57,9 @@ AC_ARG_WITH(wordnet,
 #AC_SUBST([wordnetdir])
 
 # Look for WordNet header and library in additional directories
-CPPFLAGS="$CPPFLAGS -I$wordnetdir/include"
+
 LDFLAGS="$LDFLAGS -L$wordnetdir/lib"
+CPPFLAGS="$CPPFLAGS -I$wordnetdir/include"
 
 AC_CHECK_HEADERS(wn.h,
                  [],
@@ -158,4 +159,5 @@ $PACKAGE_TARNAME $PACKAGE_VERSION configuration:
  - Path settings
  prefix: $prefix
  plugindir: $plugindir
+ wordnetdir: $wordnetdir
 EOF

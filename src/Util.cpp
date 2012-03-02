@@ -8,8 +8,8 @@
  * @brief  Definition of useful functions
  */
 
-#include "impl/util.h"
-#include "dlvhex/Error.h"
+#include "Util.h"
+#include <dlvhex2/Error.h>
 
 #include <string>
 #include <cstring>

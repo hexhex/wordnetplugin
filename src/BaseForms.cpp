@@ -10,14 +10,9 @@
  *         and storing morphological base forms
  */
 
-#include "impl/baseforms.h"
-#include "impl/util.h"
+#include "BaseForms.h"
+#include "Util.h"
 
-#include <wn.h>
-
-#include <map>
-#include <set>
-#include <string>
 #include <iostream>
 #include <cstring>
 

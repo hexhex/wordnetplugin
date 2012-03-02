@@ -16,7 +16,7 @@ namespace dlvhex {
 		double total_time;
 		#endif
 		void init();
-	}
+	};
 	
   }
 }

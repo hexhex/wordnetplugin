@@ -1,7 +1,7 @@
 
 #include "WordnetAtom.h"
 
-#include "Wordrequest.h"
+#include "WordRequest.h"
 #include "Profile.h"
 
 namespace dlvhex {

@@ -8,7 +8,8 @@
  * @brief  Definition of classes WordNetAtom and WordNetPlugin
  */
 
-#include <dlvhex2/PluginInterface.h>
+#include "WordnetPlugin.h"
+#include "WordnetAtom.h"
 
 namespace dlvhex {
   namespace wordnet {

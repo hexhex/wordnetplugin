@@ -9,12 +9,12 @@
  *         a WordNet query and its results
  */
 
-#include "impl/wordrequest.h"
-#include "impl/util.h"
-#include "impl/profile.h"
-#include "dlvhex/Error.h"
+#include "WordRequest.h"
+#include "Util.h"
+#include "Profile.h"
 
-#include "dlvhex/Term.h"
+#include <dlvhex2/Error.h>
+#include <dlvhex2/Term.h>
 
 #include <wn.h>
 
