@@ -57,9 +57,8 @@ AC_ARG_WITH(wordnet,
 #AC_SUBST([wordnetdir])
 
 # Look for WordNet header and library in additional directories
-
-LDFLAGS="$LDFLAGS -L$wordnetdir/lib"
 CPPFLAGS="$CPPFLAGS -I$wordnetdir/include"
+LDFLAGS="$LDFLAGS -L$wordnetdir/lib"
 
 AC_CHECK_HEADERS(wn.h,
                  [],
@@ -88,9 +87,7 @@ m4_ifdef([_AC_SEEN_TAG(libltdl)], [], [AC_CONFIG_SUBDIRS([libltdl])])
 
 AC_DISABLE_STATIC # we don't need a static library
 
-#
 # check for the WordNet wn library
-#
 AC_CHECK_LIB([WN], 
              wninit, 
              [],
@@ -126,9 +123,7 @@ if test "x$plugindir" == "x"; then
 	AC_MSG_ERROR([Cannot determine nonempty value for plugindir!])
 fi
 
-#
 # all needed makefiles
-#
 AC_CONFIG_FILES([
            Makefile
            src/Makefile
