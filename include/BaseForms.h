@@ -1,7 +1,7 @@
 #ifndef _BASEFORMS_H
 #define _BASEFORMS_H
 
-#include "wn.h"
+#include <wn.h>
 
 #include <set>
 #include <map>

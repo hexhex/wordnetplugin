@@ -2,9 +2,10 @@
 #define _WORDREQUEST_H
 
 #include "BaseForms.h"
+#include <dlvhex2/Registry.h>
 #include <dlvhex2/Term.h>
 
-#include <wn>
+#include <wn.h>
 
 #include <vector>
 #include <string>
@@ -16,14 +17,15 @@ namespace dlvhex {
 class WordRequest {
 
  public:
-	WordRequest(char *word);
-	WordRequest(string word);
+	WordRequest(char *word, Registry& reg);
+	WordRequest(string word, Registry& reg);
 	~WordRequest();
 
 	void doSearch(int search, int pos, vector<Tuple> &returnSet);
 	bool isPos(int pos);
 
  private:
+ 	Registry& registry;
 	string word_str;
 	char *word_ca;
 

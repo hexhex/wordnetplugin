@@ -18,7 +18,6 @@ libdlvhexwordnet_la_SOURCES = \
 # extend compiler flags by CFLAGS of other needed libraries
 #
 AM_CPPFLAGS = \
-	$(CPPFLAGS) \
 	-I$(top_srcdir)/include \
 	$(BOOST_CPPFLAGS) \
 	$(DLVHEX_CFLAGS)

@@ -1,6 +1,7 @@
 
 #include "WordnetAtom.h"
 
+#include <dlvhex2/Registry.h>
 #include "WordRequest.h"
 #include "Profile.h"
 
@@ -28,7 +29,7 @@ namespace dlvhex {
 		init();
 	}
 	
-	virtual void WordnetAtom::retrieve(const Query& query, Answer& answer) throw (PluginError) {
+	void WordnetAtom::retrieve(const Query& query, Answer& answer) throw (PluginError) {
 	
 		#ifdef PROFILE
 		clock_t start, end;
@@ -36,34 +37,36 @@ namespace dlvhex {
 		cout.precision(5);
 		#endif
 		
+		Registry& registry = *getRegistry();
+		
 		// get the input constants ...
 		std::string word;
 		int search;
 
-		if( query.getInputTuple()[0].isInt() )
-			search = query.getInputTuple()[0].getInt();
+		if( query.input[0].isIntegerTerm() )
+			search = query.input[0].address;
 		else
 			throw PluginError( "Wrong input argument type" );			
 
-		if( query.getInputTuple()[1].isString() )
-			word = query.getInputTuple()[1].getUnquotedString();
+		if( query.input[1].isConstantTerm() )
+			word = registry.terms.getByID(query.input[1]).getUnquotedString();
 		else
 			throw PluginError( "Wrong input argument type" );
 	
 		LOG(DBG, "----------------");
 		LOG(DBG, "wordnet-atom: atom invoked (search: " << search << ", word: " << word << ")");
 
-		WordRequest *wr = new WordRequest( word );
+		WordRequest *wr = new WordRequest( word, registry );
 
 		// ...and prepare the atom's output:
-		std::vector<Tuple> out;
+		std::vector<Tuple> result;
 		
 		// fill the answer object...
 		#ifdef PROFILE
 		start = clock();
 		#endif
 		
-		wr->doSearch( search, ALL_POS, out );
+		wr->doSearch( search, ALL_POS, result );
 
 		#ifdef PROFILE
 		end = clock();
@@ -73,7 +76,8 @@ namespace dlvhex {
 			"\" done in " << elapsed << " seconds (total: " << total_time << ")");
 		#endif
 
-		answer.addTuples(out);
+		for (int i=0; i<result.size(); i++)
+			answer.get().push_back(result[i]);
 
 		delete wr;
 	}
@@ -90,7 +94,6 @@ namespace dlvhex {
 
 		if( initStatus != 0 )
 			throw PluginError( "Failed to initialise WordNet." );
-
 
 		END_TIMING("initialisation")
 	}

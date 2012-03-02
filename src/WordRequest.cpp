@@ -13,6 +13,7 @@
 #include "Util.h"
 #include "Profile.h"
 
+#include <dlvhex2/Registry.h>
 #include <dlvhex2/Error.h>
 #include <dlvhex2/Term.h>
 
@@ -26,8 +27,7 @@ using namespace std;
 namespace dlvhex {
   namespace wordnet {
 
-// constructor that takes a string argument
-WordRequest::WordRequest( string word ) {
+WordRequest::WordRequest( string word, Registry& reg ) : registry(reg) {
 
   ///@todo TK: whoopsiedaisy, memory leak time!
 
@@ -44,8 +44,7 @@ WordRequest::WordRequest( string word ) {
 }
 
 
-// constructor that takes a char array argument
-WordRequest::WordRequest( char *word ) {
+WordRequest::WordRequest( char *word, Registry& reg ) : registry(reg) {
 
   ///@todo TK: whoopsiedaisy, memory leak time!
 
@@ -69,9 +68,8 @@ WordRequest::~WordRequest() {
 
 
 void WordRequest::loadBaseForms() {
-#ifdef DEBUG
-	cout << "D> wordnet-atom: loading baseforms" << endl;
-#endif
+
+	LOG(DBG, "wordnet-atom: loading baseforms");
 
 	START_TIMING
 	baseForms = new BaseForms( this->word_str );
@@ -79,40 +77,24 @@ void WordRequest::loadBaseForms() {
 }
 
 
-void WordRequest::doSearch( int search, 
-			    int pos, 
-			    vector<Tuple> &returnVector) {
+void WordRequest::doSearch( int search, int pos, vector<Tuple> &returnVector) {
 
 	SynsetPtr synset;
 
-#ifdef DEBUG
-	if( pos == ALL_POS ) {
-		cout << "D> wordnet-atom: checking all parts of speech" 
-		     << endl;
-	}
-#endif
+	if( pos == ALL_POS )
+		LOG(DBG, "wordnet-atom: checking all parts of speech");
 
 	int currentPos;
 	
-	for( currentPos = 1; 
-	     currentPos <= NUMPARTS; 
-	     currentPos++ ) {
+	for( currentPos = 1; currentPos <= NUMPARTS; currentPos++ ) {
 		if( pos == currentPos || pos == ALL_POS ) {
+			
 			START_TIMING
-#ifdef DEBUG
-			cout << "D> wordnet-atom: checking part of speech " << currentPos 
-			     << endl;
-#endif
-			synset = findtheinfo_ds( word_ca,
-						 currentPos,
-						 search,
-						 ALLSENSES );
+			LOG(DBG, "wordnet-atom: checking part of speech " << currentPos);
+			synset = findtheinfo_ds( word_ca, currentPos, search, ALLSENSES );
 			END_TIMING("WordNet called")
 
-			prepareReturnVector( synset, 
-					     currentPos, 
-					     search, 
-					     returnVector );
+			prepareReturnVector( synset, currentPos, search, returnVector );
 		}
 	}
 
@@ -128,7 +110,7 @@ void WordRequest::doSearch( int search,
 		loadBaseForms();
 		set<string> bf = baseForms->getBaseForms();
 		for( it = bf.begin(); it != bf.end(); it++ ) {
-			WordRequest *bfRequest = new WordRequest( *it );
+			WordRequest *bfRequest = new WordRequest( *it, registry );
 			bfRequest->doSearch( search, pos, returnVector);
 			delete bfRequest;
 			bfRequest = NULL;
@@ -137,9 +119,7 @@ void WordRequest::doSearch( int search,
 }
 
 
-//
 // Checks for a particular part-of-speech
-//
 bool WordRequest::isPos( int pos ) {
 	unsigned int pos_template = bit( pos );
 	unsigned int pos_field = in_wn( this->word_ca, pos );
@@ -164,10 +144,8 @@ bool WordRequest::isPos( int pos ) {
 //
 // Note: If the query is SYNS, both sense numbers will be the same
 //
-void WordRequest::prepareReturnVector( SynsetPtr synset,
-				       int pos,
-				       int search,
-				       vector<Tuple> &returnVector ) {
+void WordRequest::prepareReturnVector( SynsetPtr synset, int pos, int search, 
+									   vector<Tuple> &returnVector ) {
 
 	// Iterate through synonym senses:
 	int synSense = 1;
@@ -178,10 +156,10 @@ void WordRequest::prepareReturnVector( SynsetPtr synset,
 			// No ptrlist available for this search, 
 			// so just iterate through 0-level synsets:
 			appendSynonyms( pos, 
-					synSense,   // only 1 sense available 
-					synset,     // no descending
-					synSense,   // only 1 sense available
-					returnVector );
+							synSense,   // only 1 sense available 
+							synset,     // no descending
+							synSense,   // only 1 sense available
+							returnVector );
 		} else {
 			// descend 1 level
 			searchset = synset->ptrlist;
@@ -192,11 +170,10 @@ void WordRequest::prepareReturnVector( SynsetPtr synset,
 
 				// Iterate through words itself
 				appendSynonyms( pos, 
-						synSense,   // sense in synset
-						searchset,  // 1-level synset
-						searchSense,// sense in 
-						            // searchset
-						returnVector );
+								synSense,   // sense in synset
+								searchset,  // 1-level synset
+								searchSense,// sense in searchset
+								returnVector );
 
 				searchset = searchset->nextss;
 				searchSense++;
@@ -212,26 +189,19 @@ void WordRequest::prepareReturnVector( SynsetPtr synset,
 //
 // Appends all words of a synset to the return vector
 // 
-void WordRequest::appendSynonyms( int pos,
-				  int synSense,
-				  SynsetPtr synset,
-				  int searchSense,
-				  vector<Tuple> &returnVector ) {
+void WordRequest::appendSynonyms(int pos, int synSense, SynsetPtr synset, 
+								 int searchSense, vector<Tuple> &returnVector) {
 
-	if( synset != NULL ) {
-		int wordCounter;
-		for( wordCounter = 0; 
-		     wordCounter < synset->wcount; 
-		     wordCounter++ ) {
-			Tuple returnQuadruple;
+	if(synset != NULL) {
+		Tuple quadruple;
+		for( int wordCounter = 0; wordCounter < synset->wcount; wordCounter++ ) {
+			quadruple.clear();
+			quadruple.push_back(ID::termFromInteger(pos));
+			quadruple.push_back(ID::termFromInteger(synSense));
+			quadruple.push_back(registry.storeConstantTerm(quoteString(synset->words[wordCounter]), false));
+			quadruple.push_back(ID::termFromInteger(searchSense));
 			
-			returnQuadruple.push_back( Term(pos) );
-			returnQuadruple.push_back( Term(synSense) );
-			returnQuadruple.push_back( 
-						  Term (quoteString( synset->words[wordCounter] ) ));
-			returnQuadruple.push_back( Term(searchSense) );
-			
-			returnVector.push_back( returnQuadruple );
+			returnVector.push_back(quadruple);
 		}
 	}
 }

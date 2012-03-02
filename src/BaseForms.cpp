@@ -13,7 +13,6 @@
 #include "BaseForms.h"
 #include "Util.h"
 
-#include <iostream>
 #include <cstring>
 
 using namespace std;
@@ -84,13 +83,13 @@ void BaseForms::load() {
 void BaseForms::printBaseForms() {
 	int pos;
     
-	cout << "Base Forms for " << this->word_ca << endl;
+	LOG(PLUGIN, "Base Forms for " << this->word_ca);
 	for( pos = 1; pos <= NUMPARTS; pos++ ) {
-		cout << "Part of Speech: " << pos << endl;
+		LOG(PLUGIN, "Part of Speech: " << pos);
 		set<string> bfpos = (this->bfmap)[pos];
 		set<string>::iterator it;
 		for( it = bfpos.begin(); it != bfpos.end(); it++ )
-			cout << "\t" << *it << endl;
+			LOG(PLUGIN, "\t" << *it);
 	}
 }
 
