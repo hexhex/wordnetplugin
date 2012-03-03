@@ -12,7 +12,7 @@
 
 #include "BaseForms.h"
 #include "Util.h"
-
+#include <dlvhex2/Logger.h>
 #include <cstring>
 
 using namespace std;

@@ -24,26 +24,8 @@ EXTRA_DIST= \
 	baseforms.hex \
 	relative_via_holonym.hex \
 	relative_via_hypernym.hex \
-	tests/01-antonyms.out \
     tests/01-antonyms-nonword.out \
-    tests/02-hypernyms.out \
-    tests/03-hyponyms.out \
-    tests/04-entailment.out \
-    tests/05-similar.out \
-    tests/06-holonyms_member.out \
-    tests/07-holonyms_substance.out \
-    tests/08-holonyms_part.out \
-    tests/09-meronyms_member.out \
-    tests/10-meronyms_substance.out \
-    tests/11-meronyms_part.out \
-    tests/14-causeto.out \
-    tests/18-attribute.out \
-    tests/20-derivations.out \
-    tests/23-synonyms.out \
-    tests/38-instanceof.out \
-    tests/39-instances.out \
-    tests/baseforms.out \
-    tests/relative_via_hypernym.out
+	tests/cautiously_true.stdout
 
 TESTS = $(top_srcdir)/testsuite/run-dlvhex-tests.sh
 
@@ -53,3 +35,4 @@ TESTS_ENVIRONMENT = \
         EXAMPLESDIR=$(top_srcdir)/examples \
         TESTDIR=$(top_builddir)/examples/tests \
         OUTDIR=$(top_srcdir)/examples/tests
+

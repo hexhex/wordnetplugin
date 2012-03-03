@@ -1,6 +1,4 @@
-# including headers for make dist
-noinst_HEADERS = \
-				 WordnetPlugin.h \
+noinst_HEADERS = WordnetPlugin.h \
 				 WordnetAtom.h \
 				 WordRequest.h \
                  BaseForms.h \

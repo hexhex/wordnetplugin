@@ -8,18 +8,28 @@
  * @brief  Definition of classes WordNetAtom and WordNetPlugin
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include "WordnetPlugin.h"
 #include "WordnetAtom.h"
 
 namespace dlvhex {
   namespace wordnet {
 
-	WordnetPlugin::WordnetPlugin() { }
+	WordnetPlugin::WordnetPlugin() { 
+	
+		setNameVersion(PACKAGE_TARNAME, WORDNETPLUGIN_VERSION_MAJOR, 
+				WORDNETPLUGIN_VERSION_MINOR, WORDNETPLUGIN_VERSION_MICRO);
+		LOG(DBG, "WordnetPlugin::WordnetPlugin");
+	}
 	
 	WordnetPlugin::~WordnetPlugin() { }
 	
 	std::vector<PluginAtomPtr> WordnetPlugin::createAtoms(ProgramCtx&) const {
-	
+		
+		LOG(DBG, "WordnetPlugin::createAtoms");
 		std::vector<PluginAtomPtr> ret;
 		ret.push_back(PluginAtomPtr(new WordnetAtom, PluginPtrDeleter<PluginAtom>()));
 		return ret;
