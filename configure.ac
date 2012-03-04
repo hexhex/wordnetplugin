@@ -1,5 +1,5 @@
 AC_PREREQ([2.61])
-AC_INIT([dlvhex-wordnetplugin],[2.0.0],[juergen.bock@web.de])
+AC_INIT([dlvhex-wordnetplugin],[2.0.0],[dlvhex-devel@lists.sourceforge.net])
 AC_CONFIG_SRCDIR([src/WordnetPlugin.cpp])
 AC_CONFIG_HEADERS([include/config.h])
 
@@ -41,12 +41,12 @@ AC_ARG_ENABLE(profile,
 	      [AC_DEFINE(PROFILE,[],[enable performance anlysis])]
 	     )
 
-# Assume WordNet in this directory:
-ASSUMED_WN_BASE="/usr/local/WordNet-3.0"
-
 #
 # running configure --with-wordnet will take wordnetdir.
 #
+
+# running configure without --with-wordnetdir will assume WordNet in this directory
+ASSUMED_WN_BASE="/usr/local/WordNet-3.0"
 
 AC_ARG_WITH(wordnet,
            [  --with-wordnet          Base directory of WordNet], 
@@ -54,7 +54,7 @@ AC_ARG_WITH(wordnet,
            [wordnetdir=$ASSUMED_WN_BASE]
            )
 
-#AC_SUBST([wordnetdir])
+AC_SUBST([wordnetdir])
 
 # Look for WordNet header and library in additional directories
 CPPFLAGS="$CPPFLAGS -I$wordnetdir/include"

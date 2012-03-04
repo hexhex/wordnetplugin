@@ -1,5 +1,11 @@
 dlvhex-wordnetplugin NEWS -- history of user-visible changes.
 
-Version 0.3.0
+* Version 2.0.0
 
-* Adapt to new dlvhex plugin API.
+** Adapt to dlvhex 2.0.0.
+** Changed testcases to use query plugin and queries.
+** Activated testcases for make check/make distcheck.
+
+* Version 0.3.0
+
+** Adapt to new dlvhex plugin API.
