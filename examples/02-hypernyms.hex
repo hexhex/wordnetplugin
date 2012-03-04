@@ -5,3 +5,10 @@
 
 word("house").
 hypernyms(P,W,SW,H,SH) :- &wordnet[2,W](P,SW,H,SH), word(W).
+
+hypernyms(1,"house",1,"building",2), 
+hypernyms(1,"house",1,"home",1), 
+hypernyms(1,"house",2,"concern",1), 
+hypernyms(1,"house",6,"folk",1), 
+hypernyms(1,"house",6,"family",1), 
+hypernyms(2,"house",2,"shelter",1)?

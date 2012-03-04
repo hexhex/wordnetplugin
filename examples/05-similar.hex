@@ -6,3 +6,10 @@
 word("bright").
 similar(W,SW,S,SS) :- &wordnet[5,W](_,SW,S,SS), word(W).
 
+similar("bright",1,"silvery",18), 
+similar("bright",1,"iridescent",12), 
+similar("bright",1,"shining",11), 
+similar("bright",1,"shiny",11), 
+similar("bright",1,"brilliant",8), 
+similar("bright",3,"intelligent",1), 
+similar("bright",6,"glorious",1)?

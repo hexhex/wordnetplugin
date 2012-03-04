@@ -1,10 +1,38 @@
 EXTRA_DIST= \
-  tests/run-dlvhex-tests.sh \
-  tests/wordnetplugintests.test \
-  tests/01-antonyms-nonword.out \
-  01-antonyms-nonword.hex
+	tests/wordnetplugintests.test \
+    ../testsuite/run-dlvhex-tests.sh \
+    ../testsuite/answerset_compare.py \
+    01-anonyms.hex \
+	01-antonyms-nonword.hex \
+	02-hypernyms.hex \
+	03-hyponyms.hex \
+	04-entailment.hex \
+	05-similar.hex \
+	06-holonyms_member.hex \
+	07-holonyms_substance.hex \
+	08-holonyms_part.hex \
+	09-meronyms_member.hex \
+	10-meronyms_substance.hex \
+	11-meronyms_part.hex \
+	14-causeto.hex \
+	15-participleofverb.hex \
+	18-attribute.hex \
+	20-derivations.hex \
+	23-synonyms.hex \
+	38-instanceof.hex \
+	39-instances.hex \
+	baseforms.hex \
+	relative_via_holonym.hex \
+	relative_via_hypernym.hex \
+    tests/01-antonyms-nonword.out \
+	tests/cautiously_true.stdout
 
-# we run only one test which should return nothing, but verify that the plugin can be built and loaded
-# (as WordNet is subject to change, we cannot create fixed testcases except testcases with non-existing words like this one)
-TESTS = ./tests/run-dlvhex-tests.sh
-TESTS_ENVIRONMENT = TESTDIR=$(top_srcdir)/examples/tests DLVHEX=dlvhex PARAMETERS="-s --plugindir=$(CURDIR)/$(top_builddir)/src/impl/"
+TESTS = $(top_srcdir)/testsuite/run-dlvhex-tests.sh
+
+TESTS_ENVIRONMENT = \
+        TOP_SRCDIR=$(top_srcdir) \
+        DLVHEX="$(DLVHEX_BINDIR)/dlvhex2 -s --plugindir=!$(top_builddir)/src/.libs" \
+        EXAMPLESDIR=$(top_srcdir)/examples \
+        TESTDIR=$(top_builddir)/examples/tests \
+        OUTDIR=$(top_srcdir)/examples/tests
+

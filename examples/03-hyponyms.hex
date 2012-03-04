@@ -5,3 +5,11 @@
 
 word("work").
 hyponyms(W,SW,H,SH) :- &wordnet[3,W](1,SW,H,SH),word(W).
+
+hyponyms("work",1,"coursework",27), 
+hyponyms("work",1,"task",26), 
+hyponyms("work",1,"project",26), 
+hyponyms("work",1,"mission",23), 
+hyponyms("work",2,"masterpiece",7), 
+hyponyms("work",3,"sailing",4), 
+hyponyms("work",7,"writing",1)?

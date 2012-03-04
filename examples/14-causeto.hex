@@ -7,3 +7,6 @@
 
 word("give").
 causeto(W,C) :- &wordnet[14,W](_,_,C,_), word(W).
+
+causeto("give","hold"), 
+causeto("give","have")?

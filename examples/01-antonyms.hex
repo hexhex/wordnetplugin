@@ -8,3 +8,7 @@ word("loud").
 word("sleep").
 word("honestly").
 antonyms(P,W,A) :- &wordnet[1,W](P,_,A,_), word(W).
+
+antonyms(2,"sleep","wake"), 
+antonyms(4,"honestly","deceitfully"), 
+antonyms(4,"honestly","dishonestly")?
