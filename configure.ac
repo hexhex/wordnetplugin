@@ -50,7 +50,8 @@ ASSUMED_WN_BASE="/usr/local/WordNet-3.0"
 
 AC_ARG_WITH(wordnet,
            [  --with-wordnet          Base directory of WordNet], 
-           [wordnetdir=$withval],
+           [AC_SUBST([DISTCHECK_CONFIGURE_FLAGS],["$DISTCHECK_CONFIGURE_FLAGS --with-wordnet=${withval}"])
+            wordnetdir=$withval],
            [wordnetdir=$ASSUMED_WN_BASE]
            )
 
