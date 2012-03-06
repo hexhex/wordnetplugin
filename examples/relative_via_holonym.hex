@@ -52,3 +52,9 @@ more(M) :- &wordnet[23,W](1,S,M,_), relevant(W,S).
 %% optional: add the holonym (or whatever 
 %% the common relative was) itself to more():
 more(M) :- holonyms(W,S,M), relevant(W,S).
+
+% query: leg is not relevant, an expected answer is table
+isrelevant(X) :- relevant(X,_).
+
+isrelevant("row"), isrelevant("column"), not isrelevant("leg"),
+more("table")?
