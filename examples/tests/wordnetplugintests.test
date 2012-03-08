@@ -11,12 +11,12 @@
 10-meronyms_substance.hex cautiously_true.stdout --query-enable --query-cautious
 11-meronyms_part.hex cautiously_true.stdout --query-enable --query-cautious
 14-causeto.hex cautiously_true.stdout --query-enable --query-cautious
-## 15-participleofverb.hex ### TODO: ein partizip finden, das etwas zurueckliefert
+#15-participleofverb.hex # "very rare" means that we could not find any such data, therefore deactivated testcase
 18-attribute.hex cautiously_true.stdout --query-enable --query-cautious
 20-derivations.hex cautiously_true.stdout --query-enable --query-cautious
 23-synonyms.hex cautiously_true.stdout --query-enable --query-cautious
 38-instanceof.hex cautiously_true.stdout --query-enable --query-cautious
 39-instances.hex cautiously_true.stdout --query-enable --query-cautious
 baseforms.hex cautiously_true.stdout --query-enable --query-cautious
-## relative_via_holonym.hex ### TODO Peter
+relative_via_holonym.hex cautiously_true.stdout --query-enable --query-cautious
 relative_via_hypernym.hex cautiously_true.stdout --query-enable --query-cautious
